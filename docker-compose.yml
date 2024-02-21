@@ -1,0 +1,5 @@
+services: 
+  cps542hw3: 
+    build: https://github.com/meyersa/cps542hw3.git
+    container_name: nginx-meyersa 
+    restart: always
