@@ -3,3 +3,5 @@ services:
     build: https://github.com/meyersa/cps542hw3.git
     container_name: cps542hw3
     restart: always
+    volumes:
+      - "./results:/results"
