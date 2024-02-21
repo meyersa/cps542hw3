@@ -3,6 +3,6 @@ hw3report.txt
 cps542-spr24-hw3.pdf
 output
 hw3testdata.txt
-results/*
+results*
 *DS_Store*
 submission/
