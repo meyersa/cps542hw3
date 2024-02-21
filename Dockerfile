@@ -1,8 +1,8 @@
 FROM python:3.9.18
 
-COPY . ./src
+COPY . .
 
-WORKDIR /src
+RUN mkdir results 
 
 RUN python3 sortingAlg.py "inp-1000k/infile1.dat" "results/output1" 1000000 0 1 1
 RUN python3 sortingAlg.py "inp-1000k/infile2.dat" "results/output2" 1000000 0 1 1
