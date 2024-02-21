@@ -15,6 +15,7 @@
 
 import datetime
 import sys
+import threading 
 
 # Hits recursion limit
 sys.setrecursionlimit(10000000)
@@ -55,7 +56,7 @@ def main():
 
     # Set print flag
     try:
-        inputPrint = sys.argv[4]
+        inputPrint = int(sys.argv[4])
 
     except:
         inputPrint = 0
@@ -81,9 +82,16 @@ def main():
     with open(inputOut, 'w') as f:
         f.write("HW3 File Output\n")
 
-    # Call all functions
+    # Call all functions (multithreaded)
+    threads = [] 
     for alg in algorithms:
-        sortCaller(alg, timeList, sortedList, swapList, compareList)
+        t = threading.Thread(target=sortCaller, args=(alg, timeList, sortedList, swapList, compareList))
+        threads.append(t)
+        t.start() 
+
+    # Wait for threads to finish 
+    for t in threads: 
+        t.join()
 
     # If compare flag is set
     if (inputCompare):
@@ -344,9 +352,6 @@ def sortCaller(sort, timeList, sortedList, swapList, compareList):
     swapCount = 0
     compareCount = 0
 
-    # Basic print
-    print(f'\nAlgorithm: {sort}')
-
     # Open array with max
     arr = openFile(inputFile)[:inputMax]
 
@@ -377,7 +382,7 @@ def sortCaller(sort, timeList, sortedList, swapList, compareList):
     # Save arr to file
     printToFile(arr, sort, timeList[sort])
 
-    print(f"Time: {timeList[sort]}")
+    print(f"Algorithm: {sort: <20} | Time: {str(timeList[sort]): <20} | Swaps: {swapList[sort]: <20} | Comparisons: {compareList[sort]}")
 
 # Compares each array to the first one to find differences
 # Prints difference if it finds it
