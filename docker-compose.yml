@@ -1,3 +1,4 @@
+# Barebones compose for ease of starting
 services: 
   cps542hw3: 
     build: https://github.com/meyersa/cps542hw3.git
