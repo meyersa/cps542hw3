@@ -1,10 +1,12 @@
 services: 
   cps542hw3: 
-    build: https://github.com/meyersa/cps542hw3.git
+    build: .
     container_name: cps542hw3
     restart: always
     volumes:
       - "./results:/results"
+    environment:
+      PYTHONUNBUFFERED: 1
     env_file:
       - .env
     
