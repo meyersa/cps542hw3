@@ -6,6 +6,4 @@ COPY . .
 
 RUN chmod +x entrypoint.sh
 
-RUN ls -a 
-
 ENTRYPOINT [ "/entrypoint.sh" ]
